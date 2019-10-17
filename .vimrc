@@ -1,9 +1,18 @@
+"pathogen
+execute pathogen#infect()
+
 "turns on colors
 let &t_Co=256
 
 "sets numbers to left
 set nu rnu
 se mouse+=a
+
+"sets backspace to 2 spaces
+set bs=2
+
+"remaps jj to escape in insert mode
+inoremap jj <Esc>
 
 "pathogen
 execute pathogen#infect()
@@ -21,8 +30,6 @@ highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let b:ale_fixers = {'python': ['autopep8']}
 
 "ctags
-" set tags^=.git/tags;
-" let g:gutentags_ctags_tagfile = '.git/tags'
 let g:gutentags_define_advanced_commands=1
 
 "ctrlp
@@ -58,12 +65,8 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set statusline+=\ %{gutentags#statusline()} "shows gutentag status
 
-set bs=2
-
-inoremap jj <Esc>
-
+"directory explorer (Sex Vex)
 let g:netrw_liststyle=3
-
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
@@ -79,6 +82,7 @@ set softtabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 
+"keymapping for inserting parentheses
 inoremap (;; (<CR>);<C-c>O
 inoremap {;; {<CR>};<C-c>O
 inoremap [;; [<CR>];<C-c>O
@@ -89,10 +93,13 @@ inoremap (;<CR> (<CR>)<C-c>O
 inoremap {;<CR> {<CR>}<C-c>O
 inoremap [;<CR> [<CR>]<C-c>O
 
+"changes directory in buffer
 set autochdir
 
+"fzf
 set rtp+=/usr/local/opt/fzf
 
+"autocompletes relative path of file
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
 
 function! s:append_dir_with_fzf(line)
@@ -103,7 +110,9 @@ function! s:append_dir_with_fzf(line)
   return ''
 endfunction
 
+"autocompletes directories
 cnoremap <expr> <c-x><c-d> <sid>append_dir_with_fzf(getcmdline())
 
+"case insensitive regex search
 set ignorecase
 set smartcase
