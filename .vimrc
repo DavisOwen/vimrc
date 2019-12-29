@@ -6,7 +6,7 @@ let &t_Co=256
 
 "sets numbers to left
 set nu rnu
-se mouse+=a
+se mouse=
 
 "sets backspace to 2 spaces
 set bs=2

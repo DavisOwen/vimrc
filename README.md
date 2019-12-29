@@ -25,9 +25,9 @@ https://github.com/kien/ctrlp.vim
 
 fzf.vim (fuzzy finder, ostensibly faster and more customizable than ctrlp)
 
-  Requirement: fzf
+Requirement: fzf
 
-    https://github.com/junegunn/fzf
+https://github.com/junegunn/fzf
 
 https://github.com/junegunn/fzf.vim
 
@@ -45,8 +45,9 @@ https://github.com/tpope/vim-fugitive
 
 vim-gutentags (maintains ctags)
 
-  Requirements: ctags
-    https://packagecontrol.io/packages/CTags
+Requirements: ctags
+
+https://packagecontrol.io/packages/CTags
 
 https://github.com/ludovicchabant/vim-gutentags
 
