@@ -1,21 +1,17 @@
 "pathogen
 execute pathogen#infect()
 
-"turns on colors
-let &t_Co=256
+"turns on colors let &t_Co=256
 
 "sets numbers to left
 set nu rnu
-se mouse+=a
+set mouse+=a
 
 "sets backspace to 2 spaces
 set bs=2
 
 "remaps jj to escape in insert mode
 inoremap jj <Esc>
-
-"pathogen
-execute pathogen#infect()
 
 "highlighting and indenting
 syntax on
@@ -33,22 +29,31 @@ let b:ale_fixers = {'python': ['autopep8']}
 let g:gutentags_define_advanced_commands=1
 
 "ctrlp
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-" Ignore some folders and files for CtrlP indexing
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
-  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
-  \ }
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+" let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" " Ignore some folders and files for CtrlP indexing
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+"   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+"   \ }
+" " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+" if executable('ag')
+"   " Use Ag over Grep
+"   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" endif
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard']
+" " let g:ctrlp_match_window = 'results:100'
+"
+
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-r> :Ag<CR>
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, '--nocolor --ignore-dir={mock,}', fzf#vim#with_preview(), <bang>0)
+
+nnoremap U <C-R>
 
 "statusline
 set laststatus=2
@@ -116,3 +121,8 @@ cnoremap <expr> <c-x><c-d> <sid>append_dir_with_fzf(getcmdline())
 "case insensitive regex search
 set ignorecase
 set smartcase
+
+"sets default clipboard to system clipboard (*)
+set clipboard=unnamed
+
+let g:fzf_buffers_jump = 1
