@@ -13,9 +13,13 @@ set bs=2
 "remaps jj to escape in insert mode
 inoremap jj <Esc>
 
+"avoids background loading issue
+autocmd VimEnter * hi Normal ctermbg=none
+
 "highlighting and indenting
 syntax on
 filetype plugin indent on
+set bg=dark
 colorscheme gruvbox
 
 "linter
@@ -23,7 +27,8 @@ let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
-let b:ale_fixers = {'python': ['autopep8']}
+let g:ale_fixers = {'python': ['autopep8']}
+let g:ale_linters = {'python': ['flake8']}
 
 "ctags
 let g:gutentags_define_advanced_commands=1
@@ -102,7 +107,7 @@ inoremap [;<CR> [<CR>]<C-c>O
 set autochdir
 
 "fzf
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 "autocompletes relative path of file
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
