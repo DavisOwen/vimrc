@@ -44,6 +44,8 @@ https://github.com/tpope/vim-fugitive
 
 ### Requirements: ctags
 
+http://ctags.sourceforge.net/
+
 https://github.com/ludovicchabant/vim-gutentags
 
 ## vim-javascript (syntax highlighting for javascript)
