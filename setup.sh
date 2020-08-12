@@ -9,5 +9,8 @@ git clone https://github.com/junegunn/fzf.vim.git
 git clone https://github.com/morhetz/gruvbox.git
 git clone https://github.com/tpope/vim-surround.git
 git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/ludovicchabant/vim-gutentags.git
+git clone https://github.com/pangloss/vim-javascript.git
 git clone https://github.com/sheerun/vim-polyglot.git
+sudo apt-get install ctags
 ~/.fzf/install
